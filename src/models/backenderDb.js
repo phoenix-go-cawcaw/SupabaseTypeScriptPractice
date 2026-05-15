@@ -1,4 +1,11 @@
 import { supabase } from '../config/supabase.js';
+// ─── GET BACKENDERS ───────────────────────────────────────────
+export const getBackendersDb = async () => {
+    const { data, error } = await supabase.from('backenders').select('*');
+    if (error)
+        return { success: false, error: error.message };
+    return { success: true, data };
+};
 // ─── REGISTER ───────────────────────────────────────────────
 // Old: INSERT INTO house (first_name...) VALUES (?,?,?)
 // Note: Registration is now handled by Supabase Auth, not a manual INSERT
@@ -14,4 +21,6 @@ export const registerBackenderDb = async (name, surname, years_of_experience, pr
         return { success: false, error: error.message };
     return { success: true, data };
 };
+
+
 //# sourceMappingURL=backenderDb.js.map

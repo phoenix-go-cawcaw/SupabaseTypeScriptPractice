@@ -1,5 +1,6 @@
 // This is what a staff member looks like in your system
 export interface Backenders {
+  id?: number
   name: string
   surname: string
   years_of_experience: number
