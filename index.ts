@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import backenderRoutes from './src/routes/backenderRoute.js'
+import frontenderRoutes from './src/routes/frontenderRoute.js'
 dotenv.config()
 
 const app = express()
@@ -11,6 +12,7 @@ app.use(express.json())
 const port = process.env.PORT || 4321
 
 app.use('/backender', backenderRoutes)
+app.use('/frontender', frontenderRoutes)
 
 // Test route — replaces your MySQL SELECT 1 test
 // Just hits Supabase to confirm connection

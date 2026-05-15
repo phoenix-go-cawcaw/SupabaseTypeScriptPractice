@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express'
-import { getBackendersDb, registerBackenderDb, updateBackenderDb } from '../models/backenderDb.js'
+import { deleteBackenderDb, getBackendersDb, registerBackenderDb, updateBackenderDb } from '../models/backenderDb.js'
 
 export const getBackendersCon = async (req: Request, res: Response) => {
   try {
@@ -33,7 +33,6 @@ export const registerBackenderCon = async (req: Request, res: Response) => {
     res.status(500).json({ success: false, error: error.message })
   }
 }
-
 export const updateBackenderCon = async (
   req: Request,
   res: Response
@@ -62,5 +61,20 @@ export const updateBackenderCon = async (
       error: error.message
     })
 
+  }
+}
+export const deleteBackenderCon = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params
+
+    const result = await deleteBackenderDb(Number(id))
+
+    if (!result.success) {
+      return res.status(400).json(result)
+    }
+
+    return res.status(200).json(result)
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message })
   }
 }

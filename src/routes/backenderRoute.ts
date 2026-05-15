@@ -1,11 +1,12 @@
 import express from 'express'
-import { getBackendersCon, registerBackenderCon, updateBackenderCon } from '../controllers/backenderController.js'
+import { deleteBackenderCon, getBackendersCon, registerBackenderCon, updateBackenderCon } from '../controllers/backenderController.js'
 
 const router = express.Router()
 
 router.get('/', getBackendersCon)
-router.patch('/:id', updateBackenderCon)
 router.post('/addBackender', registerBackenderCon)
+router.patch('/updateBackender/:id', updateBackenderCon)
+router.delete('/deleteBackender/:id', deleteBackenderCon)
 
 export default router
 

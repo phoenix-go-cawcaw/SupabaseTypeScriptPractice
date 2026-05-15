@@ -1,9 +1,9 @@
-export interface Backenders {
+export interface Frontender {
   id: number
   name: string
   surname: string
-  years_of_experience: number
   preference: string
+  exp: number
 }
 
 // This is the shape of every API response from your Express server
